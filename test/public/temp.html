@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="shortcut icon" href="http://youchaikj.com/pc-img/icon.ico"> -->
+    <title>织道智能花型设计</title>
+    <style type="text/css">
+        body,ul,li,ol,p,a,img{
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        body{
+            background: #fff;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        .model{
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.3);
+            z-index: 9999;
+            left: 0;
+            top: 0;
+        }
+        .loadingBox{
+            position: absolute;
+            width: 6.25rem;
+            height: 12.5rem;
+            left: calc(50% - 3.125rem);
+            top: calc(50% - 6.25rem);
+        }
+        .loadingBox .bigImg{
+            width: 6.25rem;
+            display: block;
+        }
+        .loadingBox .smallImg{
+            position: absolute;
+            width: 1.875rem;
+            display: block;
+            top: 0;
+            left: 0;
+            animation-name: round;
+            animation-delay: .5s;
+            animation-iteration-count: infinite;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            transform-origin: 3.125rem 3.125rem;
+            /* cubic-bezier(0.075, 0.82, 0.165, 1) */
+        }
+        .loadingBox span{
+            display: block;
+            text-align: center;
+            margin-top: 1.25rem;
+            color: #333;
+            font-size: 1.25rem;
+        }
+        @keyframes round{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .modelBox{
+            position: absolute;
+            background: #fff;
+            width: 25rem;
+            height: 17.5rem;
+            left: calc(50% - 12.5rem);
+            box-sizing: border-box;
+            border-radius: .625rem;
+            top: calc(50% - 8.725rem);
+            padding: 1rem 1rem;
+            display: none;
+        }
+        .modelBox h5{
+            font-weight: normal;
+            text-align: left;
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 1.875rem;
+            padding: 0;
+            margin: 0;
+        }
+        .modelBox label{
+            display: flex;
+            align-items: center;
+            font-size: .875rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            position: relative;
+            margin-top: 1.25rem;
+        }
+        .passSpan{
+            font-size: 1rem;
+            width: 6.25rem;
+            text-align: left;
+            color: #333;
+            margin-right: .3125rem;
+        }
+        .modelBox input{
+            border: 1px solid #d8d8d8;
+            border-radius: .5rem;
+            box-sizing: border-box;
+            outline: none;
+            width: 12.5rem;
+            height: 2.5rem;
+            padding-left: .5rem;
+        }
+        .passBtn{
+            width: 7.5rem;
+            height: 2.5rem;
+            font-size: 1.25rem;
+            border-radius: 1.25rem;
+            border: none;
+            outline: none;
+            background: #133ffc;
+            color: #fff;
+            position: absolute;
+            left: calc(50% - 3.75rem);
+            bottom: 1rem;
+        }
+        .codeNumber{
+            position: absolute;
+            color: #133ffc;
+            right: 3rem;
+            top: 0;
+            font-size: 1rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="model">
+        <div class="loadingBox">
+            <img class="bigImg" src="http://youchaikj.com/pc-img/waitBG.png" alt="">
+            <img class="smallImg" src="http://youchaikj.com/pc-img/wait.png" alt="">
+            <span id="load">加载中</span>
+        </div>
+        <div class="modelBox" id="showPhone">
+            <!-- <img @click="passClose" class="passClose" src="../assets/image/login/close.png" alt=""> -->
+            <h5>绑定手机号</h5>
+            <label for="">
+                <span class="passSpan">手机号码:</span>
+                <input id="phone" type="text">
+            </label>
+            <label for="">
+                <span class="passSpan">验证码:</span>
+                <input id="code" maxlength="4" type="text" placeholder='请输入验证码'>
+                <span id="codeSecond" style="display: none;" class="codeNumber">1</span>
+                <span class="codeNumber" id="getCode">获取验证码</span>
+            </label>
+            <label for="">
+                <span id="tig" style="display: none;color: red;"></span>
+            </label>
+            <button id="sureBtn" class="passBtn">确定</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // parent.window.location.href = window.location.href;
+        if(window != top){
+            top.location.href = location.href;
+        }
+        var userTempId;
+        var loading = document.getElementById('load');
+        function load(){
+            var m = '';
+            setInterval(function(){
+                loading.innerHTML = '加载中'+m;
+                m+='.';
+                if(m==='....'){
+                    m='';
+                }
+            },500);
+        }
+        load();
+        // 数据请求兼容
+        function createXHR(){
+            if(typeof XMLHttpRequest != "undefined"){
+                return new XMLHttpRequest();
+            }else if(typeof ActiveXObject != "undefined"){
+                if(typeof arguments.callee.activeXString != 'string'){
+                    var versions = ["MSXML2.XMLHttp.6.0","MSXML2.XMLHttp.3.0","MSXML2.XMLHttp"],i,len;
+                    for(i=0,len=versions.length;i<len;i++){
+                        try{
+                            new ActiveXObject(versions[i]);
+                            arguments.callee.activeXString = versions[i];
+                            break;
+                        }catch(ex){
+                            // console.log(ex);
+                        }
+                    }
+                }
+                return new ActiveXObject(arguments.callee.activeXString);
+            }else{
+                throw new Error('No XHR object available.');
+            }
+        }
+        // 获取URL属性
+        function getQueryStringArgs(){
+            var qs = (location.search.length>0)?location.search.substring(1):"";
+            var args = {};
+            var i,len;
+            items = qs.length?qs.split('&'):[],newitem = null,name = null,value = null;
+            for(i=0,len=items.length;i<len;i++){
+                newitem = items[i].split('=');
+                // decodeURIComponent()
+                name = newitem[0];
+                value = newitem[1];
+                if(name.length){
+                    args[name] = value;
+                }
+            }
+            return args;
+        }
+        // 获取数据
+        function ajax(url){
+            var xhr = createXHR();
+            xhr.open('get',url,true);
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    var data = JSON.parse(xhr.responseText);
+                    if(data.status==0){
+                        localStorage.setItem('token',data.result.token);
+                        localStorage.setItem('userId',data.result.user.id);
+                        localStorage.setItem('qfc',true);
+                        var user = JSON.stringify(data.result.user);
+                        localStorage.setItem('user',user);
+                        if(getQueryStringArgs().language==1){
+                            localStorage.setItem('English',true);
+                        }
+                        // loginName identity身份设计师 phone
+                        // 页面跳转
+                        setTimeout(function(){
+                            window.location.href = 'http://www.zhidaoai.com';
+                        },1000);
+                    }else if(data.status==1){
+                        var showPhone = document.getElementById('showPhone');
+                        showPhone.style.display = 'block';
+                        userTempId = data.result;
+                    }else{
+                        alert(data.msg);
+                        localStorage.clear();
+                        setTimeout(function(){
+                            window.location.href = 'http://www.zhidaoai.com';
+                        },1000);
+                    }
+                }
+            }
+        }
+        // console.log(getQueryStringArgs().ssoSign)
+        // /appuser/qfcLogin
+        localStorage.setItem('ssoSign',getQueryStringArgs().ssoSign);
+        ajax('https://www.ayznscm.com/appuser/qfcLoginBySso?ssoSign='+(getQueryStringArgs().ssoSign));
+        var getCode = document.getElementById('getCode');
+        var tig = document.getElementById('tig');
+        var phone = document.getElementById('phone');
+        var code = document.getElementById('code');
+        // 获取验证码
+        getCode.onclick = function(){
+            if(phone.value==''){
+                tig.style.display = 'block';
+                tig.innerHTML = '手机号不能为空';
+            }else if(!(/^1[3456789]\d{9}$/.test(phone.value))){
+                tig.style.display = 'block';
+                tig.innerHTML = '手机号码有误';
+            }else{
+                var xhr = createXHR();
+                xhr.open('get','https://www.ayznscm.com/userverify/send?phone='+phone.value,true);
+                xhr.send();
+                var codeSecond = document.getElementById('codeSecond');
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState==4&&xhr.status==200){
+                        var data = JSON.parse(xhr.responseText);
+                        if(data.status==0){
+                            codeSecond.style.display = 'block';
+                            getCode.style.display = 'none';
+                            codeSecond.innerHTML = 59 + '秒';
+                            var clock = setInterval(function(){
+                                if(parseInt(codeSecond.innerHTML)==0){
+                                    clearInterval(clock);
+                                    codeSecond.style.display = 'none';
+                                    getCode.style.display = 'block';
+                                }else{
+                                    codeSecond.innerHTML = parseInt(codeSecond.innerHTML)-1 + '秒';
+                                }
+                            },1000);
+                        }
+                    }
+                }
+            }
+        }
+        // 点击确定
+        var sureBtn = document.getElementById('sureBtn');
+        sureBtn.onclick = function(){
+            tig.innerHTML = '';
+            tig.style.display = 'none';
+            // /appuser/qfcPhoneBind
+            // userTempId
+            if(phone.value==''){
+                tig.style.display = 'block';
+                tig.innerHTML = '手机号码不能为空';
+            }else if(code.value==''){
+                tig.style.display = 'block';
+                tig.innerHTML = '验证码不能为空';
+            }else if(code.value.length!=4){
+                tig.style.display = 'block';
+                tig.innerHTML = '验证码为四位数字';
+            }else if(!(/^1[3456789]\d{9}$/.test(phone.value))){
+                tig.style.display = 'block';
+                tig.innerHTML = '手机号码有误';
+            }else{
+                var xhr = createXHR();
+                xhr.open('get','https://www.ayznscm.com/appuser/qfcPhoneBind?phone='+phone.value+'&code='+code.value+'&userTempId='+userTempId,true);
+                xhr.send();
+                var codeSecond = document.getElementById('codeSecond');
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState==4&&xhr.status==200){
+                        var data = JSON.parse(xhr.responseText);
+                        if(data.status==0){
+                            localStorage.setItem('token',data.result.token);
+                            localStorage.setItem('userId',data.result.user.id);
+                            var user = JSON.stringify(data.result.user);
+                            localStorage.setItem('user',user);
+                            // loginName identity身份设计师 phone
+                            // 页面跳转
+                            setTimeout(function(){
+                                window.location.href = 'http://www.zhidaoai.com';
+                            },1000);
+                        }else{
+                            alert(data.msg);
+                            window.location.href = 'http://www.zhidaoai.com';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

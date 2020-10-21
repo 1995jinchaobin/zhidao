@@ -1,0 +1,43 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Main Common</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    var method = GetQueryString("method");
+    switch (method) {
+        case 'get_num':
+            var tabid = GetQueryString("tabid");
+            getNum(tabid); // execute main function
+            break;
+        default:
+            // alert("访问失败！参数不正确。");
+            break;
+    }
+    function getNum(a) {
+        if(a==0){
+            parent.parent.open("https://www.tnc.com.cn/service/zdy/indexEnterprisePay01.html");
+        }else if(a==1){
+            parent.parent.open("https://www.tnc.com.cn/service/zdy/indexEnterprisePay.html");
+            // window.open("https://www.tnc.com.cn/service/zdy/indexEnterprisePay.html?id=14923");
+        }else if(a==2){
+            parent.parent.open("https://www.tnc.com.cn/service/zdy/indexDownLoad00.html");
+            // window.open("https://www.tnc.com.cn/service/zdy/indexEnterprisePay.html?id=14925");
+        }
+    }
+    //获取URL参数
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return '';
+    }
+</script>
+
+</body>
+</html>
