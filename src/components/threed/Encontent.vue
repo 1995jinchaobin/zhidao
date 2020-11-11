@@ -1105,7 +1105,7 @@ export default {
         padding: 1.25rem 0;
         padding-left: 1.875rem;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         font-size: 1.25rem;
         color: #2c2e30;
@@ -1136,7 +1136,7 @@ export default {
     .sureBox{
         float: right;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
     }
     .sureBox button{
@@ -1165,7 +1165,7 @@ export default {
     }
     .content{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
     }
     ul.seleBox{
         width: 10rem;

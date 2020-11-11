@@ -24,7 +24,6 @@
         <div class="bottombox">
           <div class="bottombox1">
             <div class="first">作品管理</div>
-
             <div @click="xuanzhongf(1)" :class="xuanzhong==1?'xuanzhong2':''">
               <router-link class="else" to="/User/">我的花型</router-link>
             </div>
@@ -36,6 +35,18 @@
             </div>
             <div @click="xuanzhongf(4)" :class="xuanzhong==4?'xuanzhong2':''">
               <router-link class="else" to="/User/copyright">我的版权</router-link>
+            </div>
+          </div>
+          <div class="bottombox5">
+            <div class="first">供求信息</div>
+            <div @click="xuanzhongf(12)" :class="xuanzhong==12?'xuanzhong2':''">
+              <router-link  class="else" to='/User/supplyInfo?id=0'>供应信息</router-link>
+            </div>
+            <div @click="xuanzhongf(13)" :class="xuanzhong==13?'xuanzhong2':''">
+              <router-link  class="else" to='/User/supplyInfo?id=1'>求购信息</router-link>
+            </div>
+            <div @click="xuanzhongf(14)" :class="xuanzhong==14?'xuanzhong2':''">
+              <router-link  class="else" to='/User/freeRelease' >免费发布</router-link>
             </div>
           </div>
           <div class="bottombox2">
@@ -189,8 +200,8 @@
           <button @click="sureIdentity">确定</button>
         </div>
       </div>
-    </div>
-    <Jump v-if="showJump" :title="err"></Jump>-->
+    </div>-->
+    <Jump v-if="showJump" :title="err"></Jump>
   </div>
 </template>
 <script>
@@ -296,7 +307,7 @@ export default {
       };
       this.getData(obj).then(res=>{
         if (res.data.status == 0) {
-          if(res.data.result.examine_state == 2){
+          if(res.data.result&&res.data.result.examine_state == 2){
             this.studio = true;
           }
         } else if (res.data.status == -95) {
@@ -706,12 +717,19 @@ export default {
       this.$router.push({
         path: "/Enuser"
       });
-    } else {
+    } else if (this.$route.query.params==='/User/freeRelease') {
+      this.xuanzhong = 14
+      this.$router.push({
+        path: "/User/freeRelease"
+      })
+    }else {
+      console.log(2)
       this.$router.push({
         path: "/User"
-      });
+      })
     }
-  }
+  },
+  
 };
 </script>
 <style scoped>
@@ -773,6 +791,11 @@ export default {
   background-color: white;
   text-align: left;
   text-indent: 80px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.bottombox::-webkit-scrollbar {
+  display: none;
 }
 .bottombox1 {
   margin-top: 10px;
@@ -784,6 +807,9 @@ export default {
   margin-top: 50px;
 }
 .bottombox4 {
+  margin-top: 50px;
+}
+.bottombox5 {
   margin-top: 50px;
 }
 .first {
@@ -1216,10 +1242,10 @@ button:hover{
 .topbox5:hover{
   background: #eee !important;
 }
-.bottombox1>div:hover,.bottombox2>div:hover,.bottombox3>div:hover,.bottombox4>div:hover{
+.bottombox1>div:hover,.bottombox2>div:hover,.bottombox3>div:hover,.bottombox4>div:hover,.bottombox5>div:hover{
   background: rgba(255, 227, 0, 0.08);
 }
-.bottombox1>div:first-child:hover,.bottombox2>div:first-child:hover,.bottombox3>div:first-child:hover,.bottombox4>div:first-child:hover{
+.bottombox1>div:first-child:hover,.bottombox2>div:first-child:hover,.bottombox3>div:first-child:hover,.bottombox4>div:first-child:hover,.bottombox5>div:first-child:hover{
   background: rgba(255, 255, 255, 0.08);
 }
 </style>

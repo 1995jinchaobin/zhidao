@@ -80,21 +80,21 @@
     </div>
 </template>
 <script>
-    import Tab from '../../components/Tab';
+    // import Tab from '../../components/Tab';
     import Jump from '../../components/Jump';
     import InfoBox from '@/components/common/InfoBox';
     import PageJump from '@/components/common/PageJump';
-    import Usertab from '../../components/Usertab';
+    // import Usertab from '../../components/Usertab';
     import Loading from '../../components/Loading';
     import Scroll from '../../assets/js/scroll.js';
     import ProgressBar from '@/components/common/ProgressBar';
     export default {
         name: 'Flower',
         components: {
-            Tab,
+            // Tab,
             Loading,
             Jump,
-            Usertab,
+            // Usertab,
             PageJump,
             InfoBox,
             ProgressBar
@@ -617,7 +617,9 @@
                         self.pageAuto();
                         //将全选效果去掉
                         let delAll = document.getElementById("delAll");
-                        delAll.style.cssText = "display: none;";
+                        if(delAll){
+                            delAll.style.cssText = "display: none;";
+                        }
                     }else if(res.data.status==-95){
                         self.showJump = true;
                         self.err = res.data.msg;
@@ -1107,7 +1109,10 @@
                     }
                     this.isShow = 1;
                 }else if(this.isShow == 1){
-                    delAll.style.cssText = "display: none;";
+                    console.log(delAll)
+                    if (delAll){
+                        delAll.style.cssText = "display: none;";
+                    }
                     for(let i = 0;i < this.proList.length;i++){
                         this.proList[i].show = !this.proList[i].show;
                     }
@@ -1148,7 +1153,7 @@
     }
     .classify{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         color: #8d8d8d;
         font-size: 14px;
@@ -1176,7 +1181,7 @@
     }
     .delBox{
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
         font-size: 1.2rem;
         margin-right: 4.125rem;

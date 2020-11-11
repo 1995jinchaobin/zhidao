@@ -349,7 +349,7 @@ export default {
     }
     .backBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         font-size: 1rem;
         color: #585858;
         cursor: default;
@@ -363,12 +363,12 @@ export default {
     }
     .delBox{
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
     }
     .hiddenBox{
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
     }
     .hiddenBox span{

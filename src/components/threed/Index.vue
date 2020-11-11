@@ -2394,7 +2394,7 @@ button{
 .content {
   background: #f6f6f6;
   /* display: flex;
-  justify-content: start; */
+  justify-content: flex-start; */
 }
 ul.seleBox {
   width: 10rem;
@@ -2426,7 +2426,7 @@ ul.seleBox span {
 }
 .topBox {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-bottom: 1rem;
 }
 .topBox h4 {
@@ -2440,7 +2440,7 @@ ul.seleBox span {
 }
 ul.classifyBox {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
 }

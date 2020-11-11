@@ -799,7 +799,7 @@
 
     .classify {
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         color: #8a8888;
         font-size: 14px;

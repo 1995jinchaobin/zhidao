@@ -1069,7 +1069,7 @@ export default {
         width: 100%;
         margin: 3rem auto .5rem;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
     }
     .source{
         width: 100%;
@@ -1114,7 +1114,7 @@ export default {
     .classify{
         position: relative;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         margin: 0 auto;
         width: 1200px;
 
@@ -1128,7 +1128,7 @@ export default {
     }
     .classify ul.classBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
         font-size: 16px;
@@ -1192,7 +1192,7 @@ export default {
     }
     ul.sourceBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         margin-bottom: .625rem;
     }
@@ -1220,7 +1220,7 @@ export default {
     }
     .btnBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         /* margin-bottom: .625rem; */
     }
     .btnBox ul{

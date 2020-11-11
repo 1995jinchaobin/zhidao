@@ -2409,7 +2409,7 @@
 		width: 1240px;
 		position: relative;
 		display: flex;
-		justify-content: start;
+		justify-content: flex-start;
 		margin: 0 auto;
 	}
 
@@ -2423,7 +2423,7 @@
 
 	.classify ul.classBox {
 		display: flex;
-		justify-content: start;
+		justify-content: flex-start;
 		align-items: center;
 		flex-wrap: wrap;
 		font-size: 14px;

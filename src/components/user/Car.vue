@@ -129,8 +129,8 @@
     </div>
 </template>
 <script>
-import Tab from '../../components/Tab';
-import Usertab from '../../components/Usertab';
+// import Tab from '../../components/Tab';
+// import Usertab from '../../components/Usertab';
 import Jump from '../../components/Jump';
 import Scroll from '../../assets/js/scroll.js';
 import Loading from '../../components/Loading';
@@ -140,8 +140,8 @@ import PageJump from '@/components/common/PageJump';
 export default {
     name: 'Car',
     components: {
-        Tab,
-        Usertab,
+        // Tab,
+        // Usertab,
         Jump,
         Loading,
         InfoBox,
@@ -1656,7 +1656,7 @@ export default {
     }
     .endBox{
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
         position:relative;
         top: 8px;

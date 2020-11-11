@@ -594,7 +594,7 @@ export default {
 }
 .content {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-top: 2.8125rem;
   padding: 0 12.3125rem;
 }

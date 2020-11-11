@@ -104,6 +104,8 @@ export default {
         ["/Matching", "AI配色", "AI color matching"],
         ["/Changecolour", "AI配色操作页面", "AI color operation page"],
         ["/Cut", "智能抠图", "Intelligent matting"],
+        ["/Release", "供求信息", "Release"],
+        ["/ReleaseInfo", "供求详细信息", "ReleaseInfo"],
         ["/Cutout", "智能抠图操作页面", "Smart matting operation page"],
         ["/Flowerdesign", "花型设计", "Pattern design"],
         ["/Operate", "花型设计旧版", "Old version of pattern design"],
@@ -133,7 +135,12 @@ export default {
         ["/Forget", "忘记密码", "Forget password"],
         ["/User", "个人中心", "Personal Center"],
         ["/User/", "个人中心/我的花型", "Personal Center / my pattern"],
+        ["/User/freeRelease", "个人中心/免费发布", "FreeRelease"],
+        ["/User/supplyInfo", "个人中心/供应信息", "FupplyInfo"],
+        ["/User/buyingInfo", "个人中心/求购信息", "BuyingInfo"],
         ["/User/Source", "个人中心/我的素材", "Personal Center / my material"],
+        ["/User/sucessPage", "个人中心/提交成功", "SucessPage"],
+        ["/User/errorPage", "个人中心/审核失败", "ErrorPage"],
         [
           "/User/copyright",
           "个人中心/我的版权",
@@ -164,7 +171,7 @@ export default {
         ],
         ["/User/dingdan", "个人中心/我的订单", "Personal Center / my order"],
         [
-          "/User/colorSeparation",
+          "/User/ColorSeparation",
           "个人中心/我的分色",
           "Personal Center / my color separation"
         ],
@@ -191,9 +198,11 @@ export default {
     },
     ThermodynamicDiagram() {
       let self = this;
+      console.log(this.$route.path)
       let path = this.getpath(this.$route.path);
       // console.log(path);
       let IP = localStorage.getItem("IP");
+      console.log(path)
       if (this.$route.path != undefined) {
         let formData = new FormData();
         formData.append("height", document.documentElement.clientHeight);
@@ -228,7 +237,7 @@ export default {
     unloadHandler(e) {
       let self = this;
       this._gap_time = new Date().getTime() - this._beforeUnload_time;
-      debugger;
+      // debugger;
       //判断是窗口关闭还是刷新
       if (this._gap_time <= 5) {
         //如果是登录状态，关闭窗口前，移除用户
@@ -336,6 +345,7 @@ export default {
 };
 </script>
 <style>
+@import "./assets/icon/Icon.css";
 * {
   padding: 0;
   margin: 0;

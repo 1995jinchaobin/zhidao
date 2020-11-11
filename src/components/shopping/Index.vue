@@ -1259,7 +1259,7 @@ export default {
         display: flex;
         flex-direction: column;
         margin-top: 3.125rem;
-        justify-content: start;
+        justify-content: flex-start;
     }
     .noData>div{
         display: inline-block;
@@ -1287,7 +1287,7 @@ export default {
     }
     .officeMessage{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
     }
     .officeMessage img{
         display: block;

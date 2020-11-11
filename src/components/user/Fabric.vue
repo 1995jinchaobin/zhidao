@@ -436,7 +436,7 @@ export default {
         padding: 1.25rem 0;
         padding-left: 1.875rem;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         font-size: 1.25rem;
         color: #2c2e30;
@@ -474,7 +474,7 @@ export default {
     .sureBox{
         float: right;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
     }
     .sureBox button{
@@ -513,7 +513,7 @@ export default {
     }
     .backBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         font-size: 1rem;
         color: #585858;

@@ -639,7 +639,7 @@ export default {
     }
     .classify{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         color: #8d8d8d;
         font-size: 1rem;
@@ -664,7 +664,7 @@ export default {
     }
     .operate{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         margin-right: 5.375rem;
     }

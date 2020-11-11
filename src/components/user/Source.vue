@@ -104,7 +104,7 @@
     </div>
 </template>
 <script>
-    import Tab from '../../components/Tab';
+    // import Tab from '../../components/Tab';
     import Usertab from '../../components/Usertab';
     import Loading from '../../components/Loading';
     import Jump from '../../components/Jump';
@@ -114,7 +114,7 @@
     export default {
         name: 'Source',
         components: {
-            Tab,
+            // Tab,
             Usertab,
             Loading,
             Jump,
@@ -862,7 +862,7 @@
     }
     .classify{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         color: #8d8d8d;
         font-size: 14px;
@@ -886,7 +886,7 @@
     }
     .operate{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         margin-right: 5.375rem;
     }

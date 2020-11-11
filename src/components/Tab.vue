@@ -457,7 +457,8 @@ export default {
         { name: "智能抠图", show: false, link: "Cut" },
         { name: "新手教程", show: false, link: "New" },
         {name: '版权信息', show: false ,link: 'Banquan'},
-        {name: 'AI配色',show: false,link:'Matching'}
+        {name: 'AI配色',show: false,link:'Matching'},
+        {name: '供求信息',show: false,link:'Release'}
       ],
       // ,{name: "个人中心",show: false,link: "/User"}
       // 控制导航栏颜色变化
@@ -907,6 +908,7 @@ export default {
     },
     // 页面跳转，link---路由地址,name---特定页面，需自行写页面地址,优先使用link参数
     linkTo(link,name){
+      console.log(link)
       if(link){
         this.$router.push({
           name: link
@@ -1348,7 +1350,7 @@ export default {
     },
     botHidd(){
       let bot= document.getElementById("bot");
-      bot.style.cssText = "height: 264px;";
+      bot.style.cssText = "height: 308px;";
     },
     botNone(){
       let act = document.getElementById("act").dataset.act;

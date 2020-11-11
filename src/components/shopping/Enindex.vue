@@ -860,7 +860,7 @@ export default {
     }
     .searchBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
     }
     .inputBox{
@@ -1096,7 +1096,7 @@ export default {
         display: flex;
         flex-direction: column;
         margin-top: 3.125rem;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
     }
     .noData img{
@@ -1120,7 +1120,7 @@ export default {
     }
     .officeMessage{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
     }
     .officeMessage img{
         display: block;

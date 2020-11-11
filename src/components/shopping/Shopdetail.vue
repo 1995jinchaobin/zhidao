@@ -1110,7 +1110,7 @@ export default {
   display: flex;
   position: relative;
   width: 1200px;
-  justify-content: start;
+  justify-content: flex-start;
   background: #fff;
   margin: 89px auto 0;
 }

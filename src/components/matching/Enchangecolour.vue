@@ -936,7 +936,7 @@ export default {
         display: flex;
         max-width: 41.875rem;
         flex-wrap: wrap;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         margin-top: 2.5rem;
     }

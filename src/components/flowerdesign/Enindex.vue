@@ -895,7 +895,7 @@ export default {
     }
     .content{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         width: 1200px;
         margin: 0 auto;
     }
@@ -929,7 +929,7 @@ export default {
     .classify{
         position: relative;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
     }
     .classify h4{
         color: #333;
@@ -944,7 +944,7 @@ export default {
     }
     .classify ul.classBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
     }
@@ -1003,7 +1003,7 @@ export default {
     }
     ul.sourceBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         margin-bottom: .625rem;
     }
@@ -1031,7 +1031,7 @@ export default {
     }
     .btnBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         margin-bottom: .625rem;
     }
     .btnBox button{

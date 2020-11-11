@@ -121,7 +121,7 @@ export default {
     }
     .content{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
     }
     ul.seleBox{
         width: 10rem;
@@ -149,7 +149,7 @@ export default {
     .look{
         display: flex;
         flex-direction: column;
-        justify-content: start;
+        justify-content: flex-start;
         margin-top: 4.375rem;
         margin-left: 6.375rem;
     }

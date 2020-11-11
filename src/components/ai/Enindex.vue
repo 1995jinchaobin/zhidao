@@ -1843,7 +1843,7 @@ export default {
     .classify{
         position: relative;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
     }
     .classify h4{
         color: #333;
@@ -1858,7 +1858,7 @@ export default {
     }
     .classify ul.classBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
     }

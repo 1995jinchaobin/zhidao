@@ -645,7 +645,7 @@ export default {
     }
     .classify{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         color: #8d8d8d;
         font-size: 1rem;
@@ -679,7 +679,7 @@ export default {
     }
     .delBox{
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
         font-size: 1.2rem;
         margin-right: 4.125rem;

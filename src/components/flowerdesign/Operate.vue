@@ -1592,7 +1592,7 @@ export default {
         background: #fff;
         padding-top: 3.0625rem;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
     }
     ul.bBox{
         width: 2.5rem;
@@ -1720,7 +1720,7 @@ export default {
     }
     .backBox div{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
     }
     .backBox div img{
@@ -1737,7 +1737,7 @@ export default {
         display: flex;
         color: #2c2e30;
         font-size: .875rem;
-        justify-content: start;  
+        justify-content: flex-start;  
         height: 2.625rem;
         align-items: center; 
         border-bottom: 1px solid #d0d0d0;
@@ -1770,7 +1770,7 @@ export default {
     }
     .proBox{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         cursor: default;
     }
@@ -1781,7 +1781,7 @@ export default {
     }
     .imgBox{
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
     }
     .proImg{

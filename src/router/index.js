@@ -349,6 +349,17 @@ const router = new Router({
             name: 'Enchangecolour',
             component:resolve => require(['../components/matching/Enchangecolour'],resolve),
         },
+        // 供求信息
+        {
+            path: '/Release',
+            name: 'Release',
+            component:resolve => require(['../components/release/Index'],resolve),
+        },
+        {
+            path: '/ReleaseInfo',
+            name: 'ReleaseInfo',
+            component:resolve => require(['../components/release/ReleaseInfo'],resolve),
+        },
         // 智能抠图页面
         {
             path: '/Cut',
@@ -580,6 +591,31 @@ const router = new Router({
                     path: '/User/colorSeparation',
                     name: 'ColorSeparation',
                     component:resolve => require(['../components/user/ColorSeparation'],resolve),
+                },
+                {
+                    path: '/User/supplyInfo',
+                    name: 'SupplyInfo',
+                    component:resolve => require(['../components/user/gongQiu/SupplyInfo'],resolve),
+                },
+                {
+                    path: '/User/buyingInfo',
+                    name: 'BuyingInfo',
+                    component:resolve => require(['../components/user/gongQiu/BuyingInfo'],resolve),
+                },
+                {
+                    path: '/User/freeRelease',
+                    name: 'FreeRelease',
+                    component:resolve => require(['../components/user/gongQiu/FreeRelease'],resolve),
+                },
+                {
+                    path: '/User/sucessPage',
+                    name: 'SuccessPage',
+                    component:resolve => require(['../components/user/gongQiu/SuccessPage'],resolve),
+                },
+                {
+                    path: '/User/errorPage',
+                    name: 'ErrorPage',
+                    component:resolve => require(['../components/user/gongQiu/ErrorPage'],resolve),
                 }
             ]
         },

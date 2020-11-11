@@ -105,7 +105,7 @@
   </div>
 </template>
 <script>
-import Studiotap from "../../components/Studiotap";
+// import Studiotap from "../../components/Studiotap";
 import Jump from "../../components/Jump";
 import Loading from "../../components/Loading";
 import Scroll from "../../assets/js/scroll.js";
@@ -113,7 +113,7 @@ import Scroll from "../../assets/js/scroll.js";
 export default {
   name: "transactionManagement",
   components: {
-    Studiotap,
+    // Studiotap,
     Loading,
     Jump
   },
@@ -121,7 +121,7 @@ export default {
     return {
       path: "/newstudio/sucai2",
       showJump: false,
-      tabIndex: 2,
+      // tabIndex: 2,
       showLoading: false,
       type: 0,
       err: "",
@@ -1319,7 +1319,7 @@ li{
 }
 .classify {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   color: #8d8d8d;
   font-size: 14.04px;

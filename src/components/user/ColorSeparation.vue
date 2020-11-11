@@ -40,7 +40,7 @@
           <td>时间</td>
           <td>操作</td>
         </tr>
-        <tr class="orderItem" v-if="list.length>0" v-for="(item,index) in list" v-bind:key="index">
+        <tr class="orderItem" v-for="(item,index) in list" v-bind:key="index">
           <td style="width:50px">
             <div
               :class="{checkBox:true,checkedBox:checkedList.includes(item.id)}"
@@ -77,21 +77,21 @@
   </div>
 </template>
 <script>
-import Tab from "@/components/Tab";
+// import Tab from "@/components/Tab";
 import Jump from "@/components/Jump";
-import InfoBox from "@/components/common/InfoBox";
-import PageJump from "@/components/common/PageJump";
+// import InfoBox from "@/components/common/InfoBox";
+// import PageJump from "@/components/common/PageJump";
 import Loading from "@/components/Loading";
 import Scroll from "@/assets/js/scroll.js";
 import axios from "axios";
 export default {
   name: "Money",
   components: {
-    Tab,
+    // Tab,
     Loading,
     Jump,
-    PageJump,
-    InfoBox
+    // PageJump,
+    // InfoBox
   },
   data() {
     return {
@@ -498,8 +498,8 @@ export default {
       };
       self.getData(obj).then(res => {
         if (res.data.status == 0) {
-          console.log(res.data);
-          console.log(res.data.result.list[0].create_time);
+          // console.log(res.data);
+          // console.log(res.data.result.list[0].create_time);
           self.list = res.data.result.list;
           for (let i = 0; i < self.list.length; i++) {
             self.list[i].create_time = Scroll.changeDate(
@@ -543,7 +543,9 @@ export default {
       self.getData(obj).then(res => {
         if (res.data.status == 0) {
           console.log(res.data);
-          self.ColorSeparationNum = res.data.result.num;
+          if(res.data.result&&res.data.result.num){
+            self.ColorSeparationNum = res.data.result.num;
+          }
         } else if (res.data.status == -95) {
           self.showJump = true;
           self.err = res.data.msg;
