@@ -483,7 +483,7 @@ export default {
         event.target.scrollHeight -
         event.target.scrollTop -
         event.target.clientHeight;
-      console.log(scrollBottom, this.listPage, this.listlastPage);
+      // console.log(scrollBottom, this.listPage, this.listlastPage);
       if (scrollBottom < 50 && this.listPage < this.listlastPage) {
         this.listPage++;
         self.showLoading = true;
@@ -832,7 +832,7 @@ export default {
       };
       self.getData(obj).then(res => {
         if (res.data.status == 0) {
-          console.log(res.data);
+          // console.log(res.data);
           localStorage.removeItem("user");
           locationStorage.setItem("user", res.data.result);
         } else if (res.data.status == -95) {
@@ -962,11 +962,11 @@ export default {
           } else {
             _target.style.left = endx + "px";
             prevent = 1 - endx / 280;
-            console.log(endx, prevent);
+            // console.log(endx, prevent);
             if (prevent <= 0.05) {
               prevent = 0.05;
             }
-            console.log(endx, prevent);
+            // console.log(endx, prevent);
             self.ratio = (prevent * 2).toFixed(2);
           }
           if (endx < -13 && endx > 13) {
@@ -1015,8 +1015,8 @@ export default {
         }
         let endx = 140 * (2 - self.ratio);
         daxiao.style.left = endx + "px";
-        console.log(daxiao);
-        console.log(daxiao.style.left);
+        // console.log(daxiao);
+        // console.log(daxiao.style.left);
         var o = {};
         o.ratio = self.ratio;
         o.rotateX = self.rotateX;
@@ -1293,7 +1293,7 @@ export default {
           formdata: formData
         };
       }
-      console.log(obj)
+      // console.log(obj)
       this.getData(obj).then(res => {
         // console.log(res)
         localStorage.setItem("imgUrl",  self.imageUrl);
@@ -1526,7 +1526,7 @@ export default {
           this.list = result;
           this.listPage = 1;
           this.listlastPage = res.data.result.lastPage;
-          console.log(res.data.result);
+          // console.log(res.data.result);
         } else if (res.data.status == -95) {
           this.showJump = true;
           this.err = res.data.msg;
@@ -1602,8 +1602,8 @@ export default {
     // 返回
     back() {
       let newJson = {};
-      console.log(this.json.type, "type");
-      console.log(this.imageUrl, "imageurl");
+      // console.log(this.json.type, "type");
+      // console.log(this.imageUrl, "imageurl");
       if (this.showLeft) {
         let leftIndex = 0,
           classifyIndex = 0;
@@ -1990,7 +1990,7 @@ export default {
       qr.style.cssText = "height: 0;border: 0px #000 solid;";
     },
     ceshi1(){
-      console.log(this.flag,this.backImg,this.picture,this.imageUrl);
+      // console.log(this.flag,this.backImg,this.picture,this.imageUrl);
     }
   },
   mounted() {
