@@ -34,7 +34,7 @@
             <span>Copyright ©2019 浙江有柴科技有限公司</span>
             <span>织道云设计平台</br><a target="_blank" href=" " style="display:inline-block;text-decoration:none;height:20px;line-height:20px; font-size:14px"><img src='../assets/zhegong.jpg' style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">浙公网安备 33060302000811号</p ></a>
 </span>
-          <span @click="toLink">浙ICP备16033954</span>
+          <span @click="toLink">浙ICP备16033954号-3</span>
         </div>
     
     </div>
@@ -42,201 +42,202 @@
 <script>
 import QRcode from 'qrcodejs2';
 export default {
-    name: "Footer",
-    components: {
-        
-    },
-    data(){
-        return {
-            arr: [{show: false,name: '微信公众号',select: require('../assets/image/cut/wechat_select.png'),selected: require('../assets/image/cut/wechat_selected.png')},
-                {show: false,name: 'PC客户端',select: require('../assets/image/cut/pc_select.png'),selected: require('../assets/image/cut/pc_selected.png')},
-                {show: false,name: 'APP下载',select: require('../assets/image/cut/phone_select.png'),selected: require('../assets/image/cut/phone_selected.png')}],
-            typeList:[
-                {name:'开始设计',list:[{name:'分色神器',link:'/Paging',url:''},{name:'花型设计',link:'/Flowerdesign',url:''},{name:'AI设计',link:'/AI',url:''},{name:'花型商城',link:'/Shopping',url:''}]},
-                {name:'更多',list:[{name:'新手指南',link:'/New',url:''},{name:'设计师招募',link:'/maker',url:''},{name:'智能抠图',link:'/Cut',url:''}]},
-                {name:'关于织道',list:[{name:'关于我们',link:'',url:'http://www.youchaikj.com/present.html'},{name:'企业文化',link:'',url:'http://www.youchaikj.com/culture.html'},{name:'联系我们',link:'',url:'http://www.youchaikj.com/contact.html'},{name:'意见反馈',link:'/feedback',url:''}]}
-            ],
-            // 点击联系客服打开的页面地址
-            url: 'tencent://message/?uin=3501256100&Site=www.luoxiao123.cn&Menu=yes'
-        }
-    },
-    methods: {
-        linkJump(link,url,name){
-            if(link != ''){
-                this.$router.push({
-                    path:link
-                })
-            }else if(url){
-                var aBox = document.createElement('a');
-                aBox.target = '_blank';
-                aBox.href = url;
-                aBox.click();
-            }else{
-                
-            }
-        },
-        hover(index){
-            this.arr.map(function(item){
-                item.show = false;
-            });
-            this.arr[index].show = true;
-            this.$forceUpdate();
-        },
-        leave(){
-            this.arr.map(function(item){
-                item.show = false;
-            });
-            this.$forceUpdate();
-        },
-        btnClick(e,text){
-            if(text == 'PC客户端'){
-                var aBox = document.createElement('a');
-                aBox.target = '_blank';
-                aBox.href = 'http://www.youchaikj.com/product.html';
-                aBox.click();
-            }
-            if(text == "版权信息"){
-                this.$router.push({
-                    path: "Banquan"
-                });
-            }
-        },
-        toQQ(){
-            window.open(this.url);
-        },
-        toLink(){
-            window.open('http://www.beian.miit.gov.cn');
-        }
-    },
-    mounted(){
-        if(localStorage.getItem('English')){
-            this.arr = [{show: false,name: 'PC',select: require('../assets/image/cut/pc_select.png'),selected: require('../assets/image/cut/pc_selected.png')},{show: false,name: 'Browser Scan Download APP',select: require('../assets/image/cut/phone_select.png'),selected: require('../assets/image/cut/phone_selected.png')},{show: false,name: 'Wechat Public Number',select: require('../assets/image/cut/wechat_select.png'),selected: require('../assets/image/cut/wechat_selected.png')}];
-        }else{
-            this.arr = [
-                {show: false,name: '微信公众号',select: require('../assets/wx.png'),selected: require('../assets/image/cut/wechat_selected.png')},
-                {show: false,name: 'PC客户端',select: require('../assets/pc.png'),selected: require('../assets/image/cut/pc_selected.png')},
-                {show: false,name: 'APP下载',select: require('../assets/phone.png'),selected: require('../assets/image/cut/phone_selected.png')}
-            ];
-        }
+  name: "Footer",
+  components: {
+
+  },
+  data () {
+    return {
+      arr: [{ show: false, name: '微信公众号', select: require('../assets/image/cut/wechat_select.png'), selected: require('../assets/image/cut/wechat_selected.png') },
+      { show: false, name: 'PC客户端', select: require('../assets/image/cut/pc_select.png'), selected: require('../assets/image/cut/pc_selected.png') },
+      { show: false, name: 'APP下载', select: require('../assets/image/cut/phone_select.png'), selected: require('../assets/image/cut/phone_selected.png') }],
+      typeList: [
+        { name: '开始设计', list: [{ name: '分色神器', link: '/Paging', url: '' }, { name: '花型设计', link: '/Flowerdesign', url: '' }, { name: 'AI设计', link: '/AI', url: '' }, { name: '花型商城', link: '/Shopping', url: '' }] },
+        { name: '更多', list: [{ name: '新手指南', link: '/New', url: '' }, { name: '设计师招募', link: '/maker', url: '' }, { name: '智能抠图', link: '/Cut', url: '' }] },
+        { name: '关于织道', list: [{ name: '关于我们', link: '', url: 'http://www.youchaikj.com/present.html' }, { name: '企业文化', link: '', url: 'http://www.youchaikj.com/culture.html' }, { name: '联系我们', link: '', url: 'http://www.youchaikj.com/contact.html' }, { name: '意见反馈', link: '/feedback', url: '' }] }
+      ],
+      // 点击联系客服打开的页面地址
+      url: 'tencent://message/?uin=3501256100&Site=www.luoxiao123.cn&Menu=yes'
     }
+  },
+  methods: {
+    linkJump (link, url, name) {
+      if (link != '') {
+        this.$router.push({
+          path: link
+        })
+      } else if (url) {
+        var aBox = document.createElement('a');
+        aBox.target = '_blank';
+        aBox.href = url;
+        aBox.click();
+      } else {
+
+      }
+    },
+    hover (index) {
+      this.arr.map(function (item) {
+        item.show = false;
+      });
+      this.arr[index].show = true;
+      this.$forceUpdate();
+    },
+    leave () {
+      this.arr.map(function (item) {
+        item.show = false;
+      });
+      this.$forceUpdate();
+    },
+    btnClick (e, text) {
+      if (text == 'PC客户端') {
+        var aBox = document.createElement('a');
+        aBox.target = '_blank';
+        aBox.href = 'http://www.youchaikj.com/product.html';
+        aBox.click();
+      }
+      if (text == "版权信息") {
+        this.$router.push({
+          path: "Banquan"
+        });
+      }
+    },
+    toQQ () {
+      window.open(this.url);
+    },
+    toLink () {
+      window.open('http://beian.miit.gov.cn');
+    }
+  },
+  mounted () {
+    if (localStorage.getItem('English')) {
+      this.arr = [{ show: false, name: 'PC', select: require('../assets/image/cut/pc_select.png'), selected: require('../assets/image/cut/pc_selected.png') }, { show: false, name: 'Browser Scan Download APP', select: require('../assets/image/cut/phone_select.png'), selected: require('../assets/image/cut/phone_selected.png') }, { show: false, name: 'Wechat Public Number', select: require('../assets/image/cut/wechat_select.png'), selected: require('../assets/image/cut/wechat_selected.png') }];
+    } else {
+      this.arr = [
+        { show: false, name: '微信公众号', select: require('../assets/wx.png'), selected: require('../assets/image/cut/wechat_selected.png') },
+        { show: false, name: 'PC客户端', select: require('../assets/pc.png'), selected: require('../assets/image/cut/pc_selected.png') },
+        { show: false, name: 'APP下载', select: require('../assets/phone.png'), selected: require('../assets/image/cut/phone_selected.png') }
+      ];
+    }
+  }
 }
 </script>
 <style scoped>
-    .footer{
-        width: 100%;
-        background: #222;
-        height: 338px;
-        /* margin-top: 7.5rem; */
-        display: flex;
-        justify-content: space-evenly;
-    }
-    .topBox{
-        margin-top: 48.6px;
-    }
-    .topBox .topTitle{
-        width: 279px;
-        text-align: left;
-    }
-    .topTitle>span:first-child{
-        display: inline-block;
-        width: 279px;
-        height: 72px;
-        font-size: 20px;
-        color: #FFFFFF;
-        text-align: left;
-        margin-bottom: 8.4px;
-        line-height: 36px;
-    }
-    .topTitle>span:last-child{
-        font-size: 12px;
-        color: #52595B;
-    }
-    .topBox .topBody{
-        width: 209px;
-        height: 60px;
-        display: flex;
-        font-size: 12px;
-        color: #AFB7BD;
-        margin-top: 41px;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .topBody{
-        position: relative;
-    }
-    .topTitle{
-        font-weight: bold;
-    }
-    .topBody .codeBox{
-        position: absolute;
-        top: -173px;
-        width: 160px;
-        height: 169px;
-    }
-    .topBody .codeBox img{
-        max-width: 100%;
-        max-height:100%;
-    }
-    .topBox .topBtn{
-        display: block;
-        width: 128px;
-        height: 36px;
-        margin: 31px 0 36px;
-    }
-    .typeList{
-        display: flex;
-        font-size: 12px;
-        color: #AFB7BD;
-    }
-    .typeList ul{
-        text-align: left;
-        width: 72px;
-        margin-top: 50.6px;
-    }
-    .typeList ul li:first-child{
-        font-weight: bold;
-    }
-    .typeList ul+ul{
-        margin-left: 217px;
-    }
-    .typeList ul li.typeTitle:hover{
-        cursor:default;
-    }
-    .typeList ul li:hover,.msg:last-child{
-        cursor: pointer;
-    }
-    ul .typeTitle{
-        font-size: 14px;
-        color: #FFFFFF;
-        margin-bottom: 27.4px;
-    }
-    ul .typeItem{
-        margin-bottom: 20px;
-    }
-    .msg{
-        min-width: 1200px;
-        height: 126px;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-    .msg span{
-        font-size: 16px;
-        color: #171A1E;
-    }
-    .msg span:nth-child(2){
-        font-size: 36px;
-        color: #333333;
-        position: relative;
-        left: -30px;
-    }
-    .footBox{
-        width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-    }
-    /* .footerlogo{
+.footer {
+  width: 100%;
+  background: #222;
+  height: 338px;
+  /* margin-top: 7.5rem; */
+  display: flex;
+  justify-content: space-evenly;
+}
+.topBox {
+  margin-top: 48.6px;
+}
+.topBox .topTitle {
+  width: 279px;
+  text-align: left;
+}
+.topTitle > span:first-child {
+  display: inline-block;
+  width: 279px;
+  height: 72px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: left;
+  margin-bottom: 8.4px;
+  line-height: 36px;
+}
+.topTitle > span:last-child {
+  font-size: 12px;
+  color: #52595b;
+}
+.topBox .topBody {
+  width: 209px;
+  height: 60px;
+  display: flex;
+  font-size: 12px;
+  color: #afb7bd;
+  margin-top: 41px;
+  justify-content: space-between;
+  align-items: center;
+}
+.topBody {
+  position: relative;
+}
+.topTitle {
+  font-weight: bold;
+}
+.topBody .codeBox {
+  position: absolute;
+  top: -173px;
+  width: 160px;
+  height: 169px;
+}
+.topBody .codeBox img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.topBox .topBtn {
+  display: block;
+  width: 128px;
+  height: 36px;
+  margin: 31px 0 36px;
+}
+.typeList {
+  display: flex;
+  font-size: 12px;
+  color: #afb7bd;
+}
+.typeList ul {
+  text-align: left;
+  width: 72px;
+  margin-top: 50.6px;
+}
+.typeList ul li:first-child {
+  font-weight: bold;
+}
+.typeList ul + ul {
+  margin-left: 217px;
+}
+.typeList ul li.typeTitle:hover {
+  cursor: default;
+}
+.typeList ul li:hover,
+.msg:last-child {
+  cursor: pointer;
+}
+ul .typeTitle {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 27.4px;
+}
+ul .typeItem {
+  margin-bottom: 20px;
+}
+.msg {
+  min-width: 1200px;
+  height: 126px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.msg span {
+  font-size: 16px;
+  color: #171a1e;
+}
+.msg span:nth-child(2) {
+  font-size: 36px;
+  color: #333333;
+  position: relative;
+  left: -30px;
+}
+.footBox {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+/* .footerlogo{
         float: left;
         width: 142px;
         height: 81px;
@@ -281,41 +282,43 @@ export default {
     .clear{
         clear: both;
     } */
-    .copyRight{
-        width: 100%;
-        background: #333;
-        height: 62px;
-        line-height: 62px;
-        color: #aaa;
-        font-size: 14px;
-        text-align: left;
-    }
-    .copyRight span{
-        display: block;
-        width: 1200px;
-        margin: 0 auto;
-    }
-    @media screen and (max-width: 1300px){
-        .topBox,.copyRight span{
-            width: 75rem;
-        }
-    }
-    .topBtn,.topBody li{
-        cursor: pointer;
-    }
-    .topBody li:first-child>p>img{
-        width: 22px;
-        height: 17.9px;
-    }
-    .topBody li:nth-child(2)>p>img{
-        width: 17.7px;
-        height: 17.7px;
-    }
-    .topBody li:last-child>p>img{
-        width: 16.5px;
-        height: 22px;
-    }
-    .listImg{
-        margin-bottom: 3.5px;
-    }
+.copyRight {
+  width: 100%;
+  background: #333;
+  height: 62px;
+  line-height: 62px;
+  color: #aaa;
+  font-size: 14px;
+  text-align: left;
+}
+.copyRight span {
+  display: block;
+  width: 1200px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1300px) {
+  .topBox,
+  .copyRight span {
+    width: 75rem;
+  }
+}
+.topBtn,
+.topBody li {
+  cursor: pointer;
+}
+.topBody li:first-child > p > img {
+  width: 22px;
+  height: 17.9px;
+}
+.topBody li:nth-child(2) > p > img {
+  width: 17.7px;
+  height: 17.7px;
+}
+.topBody li:last-child > p > img {
+  width: 16.5px;
+  height: 22px;
+}
+.listImg {
+  margin-bottom: 3.5px;
+}
 </style>
